@@ -16,6 +16,9 @@ plugins:
 functions:
   get-user:
     handler: getUsers/handler.getUsers
+    package:
+      patterns:
+        - "getUsers/handler.js"
     events:
       - http:
           path: users/{id}
@@ -23,6 +26,9 @@ functions:
 
   get-users:
     handler: getUsers/handler.users
+    package:
+      patterns:
+        - "getUsers/handler.js"
     events:
       - http: 
           path: users
@@ -31,12 +37,18 @@ functions:
   
   create-user:
     handler: createUsers/handler.createUser
+    package:
+      patterns:
+        - "createUsers/handler.js"
     events:
       - http:
           path: users
           method: POST
   update-user:
     handler: updateUsers/handler.updateUsers
+    package:
+      patterns:
+        - "updateUsers/handler.js"
     events:
       - http:
           path: users/{id}
@@ -44,6 +56,9 @@ functions:
     
   delete-users:
      handler: deleteUsers/handler.deleteUsers
+     package:
+      patterns:
+        - "deleteUsers/handler.py"
      runtime: python3.8
      events:
        - http:
@@ -54,7 +69,8 @@ functions:
 package:
   individually: true
   patterns:
-    - "!.dynamodb"
+    - "!*/**"
+    
 
 custom:
   serverless-dynamodb:
