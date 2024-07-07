@@ -1,0 +1,22 @@
+{
+  "name": "learn-serverless-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.21.0",
+    "serverless-offline": "^13.6.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.609.0",
+    "@aws-sdk/lib-dynamodb": "^3.610.0",
+    "@aws-sdk/util-dynamodb": "^3.609.0",
+    "serverless-dynamodb": "^0.2.53",
+    "uuid": "^10.0.0"
+  }
+}
