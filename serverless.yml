@@ -3,6 +3,9 @@ service: crud-serverless-users
 provider:
   name: aws
   runtime: nodejs20.x
+  apiGateway:
+    apiKey:
+      - crud-serverless-users-api-key
   iam:
     role:
       statements:
@@ -28,6 +31,7 @@ functions:
         - "getUsers/handler.js"
     events:
       - http:
+          private: true
           path: users/{id}
           method: GET
           request:
