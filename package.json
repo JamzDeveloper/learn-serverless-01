@@ -10,13 +10,16 @@
   "license": "ISC",
   "devDependencies": {
     "serverless": "^3.21.0",
-    "serverless-offline": "^13.6.0"
+    "serverless-dynamodb": "^0.2.53",
+    "serverless-offline": "^13.6.0",
+    "serverless-s3-local": "^0.8.4"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.609.0",
     "@aws-sdk/lib-dynamodb": "^3.610.0",
+    "@aws-sdk/s3-request-presigner": "^3.613.0",
     "@aws-sdk/util-dynamodb": "^3.609.0",
-    "serverless-dynamodb": "^0.2.53",
+    "sharp": "^0.33.4",
     "uuid": "^10.0.0"
   }
 }
