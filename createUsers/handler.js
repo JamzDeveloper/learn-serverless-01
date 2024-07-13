@@ -31,10 +31,10 @@ const createUser = async (event, context) => {
     ...Object.fromEntries(
       Object.entries(userBody).map(([key, value]) => {
         if (key === "age") {
-          return [key, { "N": value }];
+          return [key, { N: +value }];
         }
 
-        return [key, { "S": value }];
+        return [key, { S: value }];
       })
     ),
   };
