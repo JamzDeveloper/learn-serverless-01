@@ -3,7 +3,7 @@
   "title": "User",
   "description": "User of the system",
   "type": "object",
-  "required": ["name", "email", "age"],
+  "required": ["name", "email"],
   "properties": {
     "name": {
       "description": "Name of person",
