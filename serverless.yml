@@ -51,6 +51,8 @@ functions:
 
   create-user:
     handler: createUsers/handler.createUser
+    layers:
+      - { Ref: BaseLambdaLayer }
     package:
       patterns:
         - "createUsers/handler.js"
