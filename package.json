@@ -10,7 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "serverless": "^3.21.0",
+    "serverless-apigateway-service-proxy": "^2.2.1",
     "serverless-dynamodb": "^0.2.53",
+    "serverless-lift": "^1.29.0",
     "serverless-offline": "^13.6.0",
     "serverless-s3-local": "^0.8.4"
   },
