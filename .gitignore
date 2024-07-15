@@ -2,3 +2,5 @@ node_modules/
 .dynamodb/
 bin
 package-lock.json 
+.serverless 
+nodejs.zip 

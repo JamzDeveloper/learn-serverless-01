@@ -3,25 +3,22 @@ const {
 
   PutItemCommand,
 } = require("@aws-sdk/client-dynamodb");
-const {
-  DynamoDBDocumentClient,
-
-} = require("@aws-sdk/lib-dynamodb");
+const { DynamoDBDocumentClient } = require("@aws-sdk/lib-dynamodb");
 
 const { v4: uuidv4 } = require("uuid");
 
 let paramsDynamoDBClient = {};
 
- if (process.env.IS_OFFLINE) {
-paramsDynamoDBClient = {
-  region: "fakeRegion",
-  endpoint: "http://0.0.0.0:8000",
-  credentials: {
-    accessKeyId: "fakeMyKeyId",
-    secretAccessKey: "fakeSecretAccessKey",
-  },
-};
- }
+if (process.env.IS_OFFLINE) {
+  paramsDynamoDBClient = {
+    region: "fakeRegion",
+    endpoint: "http://0.0.0.0:8000",
+    credentials: {
+      accessKeyId: "fakeMyKeyId",
+      secretAccessKey: "fakeSecretAccessKey",
+    },
+  };
+}
 const client = new DynamoDBClient(paramsDynamoDBClient);
 
 const docClient = DynamoDBDocumentClient.from(client);
@@ -29,11 +26,16 @@ const docClient = DynamoDBDocumentClient.from(client);
 const createUser = async (event, context) => {
   const userBody = JSON.parse(event.body);
 
-
   const item = {
     id: { S: uuidv4() },
     ...Object.fromEntries(
-      Object.entries(userBody).map(([key, value]) => [key, { S: value }])
+      Object.entries(userBody).map(([key, value]) => {
+        if (key === "age") {
+          return [key, { N: +value }];
+        }
+
+        return [key, { S: value }];
+      })
     ),
   };
   const params = {
